@@ -496,7 +496,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,hsl(122,39%,49%,0.15),transparent_50%)]"></div>
         <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
           <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6">
-            Transforme o atendimento da sua clínica com IA
+            Transforme o atendimento da sua clínica com a Anna, a Inteligência Artificial da 123atendi
           </h2>
           <p className="text-base md:text-lg text-white/80 mb-6 md:mb-8 max-w-2xl mx-auto px-2">
             Junte-se a centenas de clínicas que já automatizaram seu atendimento
