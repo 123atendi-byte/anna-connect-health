@@ -1,12 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { MessageSquare, Calendar, AlertCircle, TrendingDown, TrendingUp, Heart, Clock, Sparkles, Bot, Zap } from "lucide-react";
+import { MessageSquare, Calendar, AlertCircle, TrendingDown, TrendingUp, Heart, Clock, Sparkles, Bot, Zap, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { TypewriterText } from "@/components/TypewriterText";
 import { FloatingElements } from "@/components/FloatingElements";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import logo from "@/assets/logo-123atendi.jpeg";
 import aiChatbot from "@/assets/ai-chatbot-demo.jpg";
 import aiDashboard from "@/assets/ai-dashboard-demo.jpg";
@@ -407,53 +409,84 @@ const Index = () => {
               </div>
             </motion.div>
 
-            <div className="lg:col-span-2 grid md:grid-cols-2 gap-6 md:gap-8">
-              {[
-                {
-                  initials: "LR",
-                  quote: "A Anna mudou completamente nosso fluxo de atendimento.",
-                  name: "Dra. Lívia Rezende",
-                  specialty: "Pediatra"
-                },
-                {
-                  initials: "RA",
-                  quote: "Hoje nenhum paciente fica sem resposta.",
-                  name: "Dr. Rafael Avancini",
-                  specialty: "Ortopedista"
-                }
-              ].map((testimonial, i) => (
-                <motion.div
-                  key={testimonial.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: i * 0.2, duration: 0.5 }}
-                  whileHover={{ y: -5 }}
-                >
-                  <Card className="border-primary/20 bg-card hover:shadow-xl transition-all duration-300 h-full">
-                    <CardContent className="p-6 md:p-8">
-                      <div className="flex items-start gap-3 md:gap-4 mb-4">
-                        <motion.div 
-                          className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
-                          whileHover={{ scale: 1.1, rotate: 360 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <span className="text-primary font-bold text-base md:text-lg">{testimonial.initials}</span>
-                        </motion.div>
-                        <div>
-                          <p className="text-base md:text-lg text-foreground italic mb-3">
-                            "{testimonial.quote}"
-                          </p>
-                          <p className="text-sm font-semibold text-foreground">
-                            {testimonial.name}
-                          </p>
-                          <p className="text-sm text-muted-foreground">{testimonial.specialty}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+            <div className="lg:col-span-2">
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                plugins={[
+                  Autoplay({
+                    delay: 4000,
+                  }),
+                ]}
+                className="w-full"
+              >
+                <CarouselContent>
+                  {[
+                    {
+                      initials: "LR",
+                      quote: "A Anna mudou completamente nosso fluxo de atendimento.",
+                      name: "Dra. Lívia Rezende",
+                      specialty: "Pediatra"
+                    },
+                    {
+                      initials: "RA",
+                      quote: "Hoje nenhum paciente fica sem resposta.",
+                      name: "Dr. Rafael Avancini",
+                      specialty: "Traumatologista"
+                    },
+                    {
+                      initials: "RH",
+                      quote: "O agendamento automático revolucionou minha agenda.",
+                      name: "Dr. Rafael Hartman",
+                      specialty: "Traumatologista"
+                    },
+                    {
+                      initials: "FH",
+                      quote: "Anna liberou minha equipe para focar no atendimento.",
+                      name: "Dr. Flavio Hanciau",
+                      specialty: "Traumatologista"
+                    }
+                  ].map((testimonial, i) => (
+                    <CarouselItem key={testimonial.name} className="md:basis-1/2">
+                      <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ delay: i * 0.1, duration: 0.5 }}
+                        whileHover={{ y: -5 }}
+                        className="h-full"
+                      >
+                        <Card className="border-primary/20 bg-card hover:shadow-xl transition-all duration-300 h-full">
+                          <CardContent className="p-6 md:p-8">
+                            <div className="flex items-start gap-3 md:gap-4 mb-4">
+                              <motion.div 
+                                className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
+                                whileHover={{ scale: 1.1, rotate: 360 }}
+                                transition={{ duration: 0.5 }}
+                              >
+                                <span className="text-primary font-bold text-base md:text-lg">{testimonial.initials}</span>
+                              </motion.div>
+                              <div>
+                                <p className="text-base md:text-lg text-foreground italic mb-3">
+                                  "{testimonial.quote}"
+                                </p>
+                                <p className="text-sm font-semibold text-foreground">
+                                  {testimonial.name}
+                                </p>
+                                <p className="text-sm text-muted-foreground">{testimonial.specialty}</p>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="hidden md:flex" />
+                <CarouselNext className="hidden md:flex" />
+              </Carousel>
             </div>
           </div>
         </div>
