@@ -147,7 +147,7 @@ const Index = () => {
       </section>
 
       {/* Clientes/Parceiros */}
-      <section className="py-12 md:py-16 bg-background">
+      <section className="hidden py-12 md:py-16 bg-background">
         <div className="container mx-auto px-4">
           <h2 className="text-center text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-8 md:mb-12">
             Clínicas que já transformaram o atendimento com a Anna
