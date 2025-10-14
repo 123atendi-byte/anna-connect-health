@@ -587,13 +587,13 @@ const Index = () => {
             </motion.h2>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto items-center">
+          <div className="grid lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto items-start">
             <motion.div
               initial={{ opacity: 0, x: -50, scale: 0.95 }}
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="lg:col-span-1 max-w-md mx-auto w-full"
+              className="lg:col-span-1 max-w-xs mx-auto w-full mb-8 lg:mb-0"
             >
               <div className="relative">
                 <motion.div
