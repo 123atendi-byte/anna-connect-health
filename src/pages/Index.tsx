@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import { TypewriterText } from "@/components/TypewriterText";
 import { FloatingElements } from "@/components/FloatingElements";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import logo from "@/assets/logo-123atendi.jpeg";
@@ -15,6 +15,9 @@ import aiDashboard from "@/assets/ai-dashboard-demo.jpg";
 import whatsappChat from "@/assets/whatsapp-ai-chat.jpg";
 const Index = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const plugin = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
+  );
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -415,11 +418,7 @@ const Index = () => {
                   align: "start",
                   loop: true,
                 }}
-                plugins={[
-                  Autoplay({
-                    delay: 4000,
-                  }),
-                ]}
+                plugins={[plugin.current]}
                 className="w-full"
               >
                 <CarouselContent>
