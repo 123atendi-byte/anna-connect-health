@@ -107,12 +107,18 @@ const Index = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-3xl mx-auto"
+              className="text-base md:text-lg text-white/80 mb-10 leading-relaxed max-w-3xl mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Desenvolvida pela 123atendi, Anna é uma atendente de inteligência artificial criada para clínicas médicas. Responde pacientes, confirma consultas e mantém sua clínica ativa no WhatsApp 24 horas por dia.
+              A Anna é uma atendente de inteligência artificial, desenvolvida pela 123atendi.
+              <br />
+              Ela responde pacientes, marca consultas lá dentro do prontuário médico,
+              <br />
+              remarca quando necessário e ainda faz a confirmação de comparecimento
+              <br />
+              do paciente 24h antes da consulta. Sua clínica ativa no WhatsApp 24 horas por dia.
             </motion.p>
             
             <motion.div
