@@ -89,7 +89,9 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              O primeiro passo para cuidar melhor dos seus pacientes é ter um
+              O primeiro passo para cuidar melhor
+              <br />
+              dos seus pacientes é ter um
               <br />
               <span className="text-primary inline-block relative">
                 <TypewriterText 
