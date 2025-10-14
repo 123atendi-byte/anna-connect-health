@@ -456,6 +456,123 @@ const Index = () => {
         </div>
       </section>
 
+      {/* CTA Section com Mockup */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-muted/50 to-muted overflow-hidden relative">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="relative rounded-3xl bg-gradient-to-br from-muted to-background border border-border overflow-hidden">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center p-8 md:p-12 lg:p-16">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="z-10"
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <Badge variant="outline" className="mb-6 bg-background/50 backdrop-blur-sm">
+                    <Sparkles className="w-4 h-4 mr-2" />
+                    CONHEÇA A ANNA
+                  </Badge>
+                </motion.div>
+
+                <motion.h2 
+                  className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  Comece a{" "}
+                  <span className="text-primary">revolucionar</span>
+                  <br />
+                  o atendimento da sua clínica com IA.
+                </motion.h2>
+
+                <motion.p
+                  className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  Anna automatiza agendamentos, confirmações e atendimento 24/7 pelo WhatsApp. Transforme sua clínica hoje mesmo.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                >
+                  <Button 
+                    size="lg"
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg shadow-xl hover:scale-105 transition-all group"
+                  >
+                    <MessageSquare className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                    Agende uma demonstração
+                  </Button>
+                </motion.div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="relative z-10">
+                  <motion.div
+                    whileHover={{ scale: 1.02, rotate: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative"
+                  >
+                    <img 
+                      src={whatsappChat} 
+                      alt="Anna WhatsApp em ação" 
+                      className="w-full max-w-md mx-auto drop-shadow-2xl rounded-3xl"
+                    />
+                  </motion.div>
+                </div>
+
+                {/* Elementos decorativos */}
+                <motion.div
+                  className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.5, 0.3]
+                  }}
+                  transition={{ 
+                    duration: 4, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                />
+                
+                <motion.div
+                  className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl"
+                  animate={{ 
+                    scale: [1, 1.3, 1],
+                    opacity: [0.2, 0.4, 0.2]
+                  }}
+                  transition={{ 
+                    duration: 5, 
+                    repeat: Infinity, 
+                    ease: "easeInOut",
+                    delay: 1
+                  }}
+                />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Depoimentos */}
       <section id="depoimentos" className="py-16 md:py-20 bg-muted/30 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6">
