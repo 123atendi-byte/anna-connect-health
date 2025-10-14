@@ -206,8 +206,8 @@ const Index = () => {
                   },
                   {
                     icon: Calendar,
-                    title: "Gerencia consultas",
-                    desc: "Confirmações automáticas, lembretes e reagendamentos",
+                    title: "Agendamento direto na agenda",
+                    desc: "Anna agenda pacientes automaticamente na agenda do médico, além de fazer confirmações e reagendamentos",
                   },
                   {
                     icon: AlertCircle,
