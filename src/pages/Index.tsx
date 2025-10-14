@@ -3,58 +3,136 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { MessageSquare, Calendar, AlertCircle, TrendingDown, TrendingUp, Heart, Clock, Sparkles, Bot, Zap } from "lucide-react";
 import Navbar from "@/components/Navbar";
-
+import { TypewriterText } from "@/components/TypewriterText";
+import { FloatingElements } from "@/components/FloatingElements";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 const Index = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-hidden">
       <Navbar />
 
-      {/* Hero Section - Dark Background */}
+      {/* Hero Section - Dark Background with Animations */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[hsl(var(--hero-bg))] to-[hsl(var(--hero-bg-end))] pt-32 pb-20 md:pt-40 md:pb-32">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(122,39%,49%,0.1),transparent_50%)]"></div>
+        {/* Animated gradient overlay */}
+        <motion.div 
+          className="absolute inset-0 opacity-30"
+          animate={{
+            background: [
+              "radial-gradient(circle at 30% 50%, hsl(122, 39%, 49%, 0.15), transparent 50%)",
+              "radial-gradient(circle at 70% 50%, hsl(122, 39%, 49%, 0.15), transparent 50%)",
+              "radial-gradient(circle at 30% 50%, hsl(122, 39%, 49%, 0.15), transparent 50%)",
+            ],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Mouse follower gradient */}
+        <motion.div
+          className="absolute w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none"
+          animate={{
+            x: mousePosition.x - 192,
+            y: mousePosition.y - 192,
+          }}
+          transition={{ type: "spring", damping: 30, stiffness: 200 }}
+          style={{
+            background: "radial-gradient(circle, hsl(122, 39%, 49%), transparent 70%)",
+          }}
+        />
+
+        {/* Floating elements */}
+        <FloatingElements />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
-            {/* Tags */}
-            <div className="flex flex-wrap justify-center gap-3 mb-8 animate-fade-in">
-              <Badge variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20 px-4 py-2">
-                <Bot className="w-4 h-4 mr-2" />
-                Chatbot
-              </Badge>
-              <Badge variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20 px-4 py-2">
-                <Zap className="w-4 h-4 mr-2" />
-                Automação Inteligente
-              </Badge>
-              <Badge variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20 px-4 py-2">
-                <Sparkles className="w-4 h-4 mr-2" />
-                IA
-              </Badge>
-            </div>
+            {/* Tags with stagger animation */}
+            <motion.div 
+              className="flex flex-wrap justify-center gap-3 mb-8"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              {[
+                { icon: Bot, label: "Chatbot" },
+                { icon: Zap, label: "Automação Inteligente" },
+                { icon: Sparkles, label: "IA" },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.1, duration: 0.4 }}
+                >
+                  <Badge variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20 px-4 py-2 backdrop-blur-sm">
+                    <item.icon className="w-4 h-4 mr-2" />
+                    {item.label}
+                  </Badge>
+                </motion.div>
+              ))}
+            </motion.div>
 
-            {/* Hero Title */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in">
+            {/* Hero Title with Typewriter */}
+            <motion.h1 
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               Atendimento médico com{" "}
               <span className="text-primary inline-block relative">
-                inteligência artificial
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-primary/30 blur-sm"></span>
+                <TypewriterText 
+                  texts={["inteligência artificial", "tecnologia avançada", "Anna IA"]}
+                  className="text-primary"
+                />
+                <motion.span 
+                  className="absolute bottom-0 left-0 w-full h-1 bg-primary/30 blur-sm"
+                  animate={{ scaleX: [0, 1, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                />
               </span>
-            </h1>
+            </motion.h1>
             
-            <p className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-3xl mx-auto animate-slide-up">
-              A IA Anna responde pacientes, confirma consultas e mantém sua clínica sempre conectada — tudo pelo WhatsApp.
-            </p>
-            
-            <Button 
-              size="lg" 
-              className="bg-white text-[hsl(var(--hero-bg))] hover:bg-white/90 font-semibold px-8 py-6 text-lg shadow-2xl animate-fade-in"
+            <motion.p 
+              className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-3xl mx-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Conheça a Anna
-            </Button>
+              A IA Anna responde pacientes, confirma consultas e mantém sua clínica sempre conectada — tudo pelo WhatsApp.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <Button 
+                size="lg" 
+                className="bg-white text-[hsl(var(--hero-bg))] hover:bg-white/90 font-semibold px-8 py-6 text-lg shadow-2xl hover:scale-105 transition-all"
+              >
+                Conheça a Anna
+              </Button>
+            </motion.div>
           </div>
         </div>
 
-        {/* Decorative gradient */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
+        {/* Decorative animated gradient */}
+        <motion.div 
+          className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        />
       </section>
 
       {/* Clientes/Parceiros */}
@@ -86,47 +164,47 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-xl">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  <MessageSquare className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Responde automaticamente
-                </h3>
-                <p className="text-muted-foreground">
-                  Atendimento instantâneo no WhatsApp para dúvidas comuns e informações
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-xl">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  <Calendar className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Gerencia consultas
-                </h3>
-                <p className="text-muted-foreground">
-                  Confirmações automáticas, lembretes e reagendamentos
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-xl">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  <AlertCircle className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Prioriza urgências
-                </h3>
-                <p className="text-muted-foreground">
-                  Identifica casos urgentes e conecta com a equipe médica
-                </p>
-              </CardContent>
-            </Card>
+            {[
+              {
+                icon: MessageSquare,
+                title: "Responde automaticamente",
+                desc: "Atendimento instantâneo no WhatsApp para dúvidas comuns e informações",
+              },
+              {
+                icon: Calendar,
+                title: "Gerencia consultas",
+                desc: "Confirmações automáticas, lembretes e reagendamentos",
+              },
+              {
+                icon: AlertCircle,
+                title: "Prioriza urgências",
+                desc: "Identifica casos urgentes e conecta com a equipe médica",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ delay: i * 0.2, duration: 0.5 }}
+              >
+                <Card className="border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-xl h-full">
+                  <CardContent className="p-8 text-center">
+                    <motion.div 
+                      className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
+                      <item.icon className="w-8 h-8 text-primary" />
+                    </motion.div>
+                    <h3 className="text-xl font-semibold text-foreground mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-muted-foreground">{item.desc}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -142,61 +220,37 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            <Card className="border-border hover:shadow-lg transition-all duration-300 bg-card">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                  <TrendingDown className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2 text-lg">
-                  Reduza faltas
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Lembretes automáticos diminuem no-shows e otimizam sua agenda
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border hover:shadow-lg transition-all duration-300 bg-card">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                  <TrendingUp className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2 text-lg">
-                  Aumente produtividade
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Sua equipe ganha tempo para focar em tarefas de maior valor
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border hover:shadow-lg transition-all duration-300 bg-card">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                  <Heart className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2 text-lg">
-                  Melhore experiência
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Respostas rápidas e personalizadas aumentam satisfação
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border hover:shadow-lg transition-all duration-300 bg-card">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                  <Clock className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2 text-lg">
-                  Atendimento 24h
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Anna trabalha sem parar, mesmo fora do horário comercial
-                </p>
-              </CardContent>
-            </Card>
+            {[
+              { icon: TrendingDown, title: "Reduza faltas", desc: "Lembretes automáticos diminuem no-shows e otimizam sua agenda" },
+              { icon: TrendingUp, title: "Aumente produtividade", desc: "Sua equipe ganha tempo para focar em tarefas de maior valor" },
+              { icon: Heart, title: "Melhore experiência", desc: "Respostas rápidas e personalizadas aumentam satisfação" },
+              { icon: Clock, title: "Atendimento 24h", desc: "Anna trabalha sem parar, mesmo fora do horário comercial" },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.4 }}
+                whileHover={{ y: -5 }}
+              >
+                <Card className="border-border hover:shadow-lg transition-all duration-300 bg-card h-full">
+                  <CardContent className="p-6">
+                    <motion.div 
+                      className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <item.icon className="w-6 h-6 text-primary" />
+                    </motion.div>
+                    <h3 className="font-semibold text-foreground mb-2 text-lg">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
