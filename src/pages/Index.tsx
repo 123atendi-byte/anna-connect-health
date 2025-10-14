@@ -24,7 +24,7 @@ const Index = () => {
       <Navbar />
 
       {/* Hero Section - Dark Background with Animations */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[hsl(var(--hero-bg))] to-[hsl(var(--hero-bg-end))] pt-32 pb-20 md:pt-40 md:pb-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[hsl(var(--hero-bg))] to-[hsl(var(--hero-bg-end))] pt-24 pb-16 md:pt-32 md:pb-20 lg:pt-40 lg:pb-32">
         {/* Animated gradient overlay */}
         <motion.div 
           className="absolute inset-0 opacity-30"
@@ -54,8 +54,8 @@ const Index = () => {
         {/* Floating elements */}
         <FloatingElements />
         
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-5xl mx-auto text-center sm:text-left md:text-center">
             {/* Tags with stagger animation */}
             <motion.div 
               className="flex flex-wrap justify-center gap-3 mb-8"
@@ -107,28 +107,29 @@ const Index = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-base md:text-lg text-white/80 mb-10 leading-relaxed max-w-3xl mx-auto"
+              className="text-sm sm:text-base md:text-lg text-white/80 mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto px-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               A Anna é uma atendente de inteligência artificial, desenvolvida pela 123atendi.
-              <br />
-              Ela responde pacientes, marca consultas lá dentro do prontuário médico,
-              <br />
-              remarca quando necessário e ainda faz a confirmação de comparecimento
-              <br />
-              do paciente 24h antes da consulta. Sua clínica ativa no WhatsApp 24 horas por dia.
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>Ela responde pacientes, marca consultas lá dentro do prontuário médico,
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>remarca quando necessário e ainda faz a confirmação de comparecimento
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>do paciente 24h antes da consulta. Sua clínica ativa no WhatsApp 24 horas por dia.
             </motion.p>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
+              className="px-4"
             >
               <Button 
                 size="lg" 
-                className="bg-white text-[hsl(var(--hero-bg))] hover:bg-white/90 font-semibold px-8 py-6 text-lg shadow-2xl hover:scale-105 transition-all"
+                className="bg-white text-[hsl(var(--hero-bg))] hover:bg-white/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl hover:scale-105 transition-all w-full sm:w-auto"
               >
                 Conheça a Anna
               </Button>
@@ -146,15 +147,15 @@ const Index = () => {
       </section>
 
       {/* Clientes/Parceiros */}
-      <section className="py-16 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-center text-2xl md:text-3xl font-bold text-foreground mb-12">
+          <h2 className="text-center text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-8 md:mb-12">
             Clínicas que já transformaram o atendimento com a Anna
           </h2>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 opacity-60">
             {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="w-32 h-16 bg-muted rounded-lg flex items-center justify-center">
-                <span className="text-muted-foreground text-sm font-semibold">Clínica {i}</span>
+              <div key={i} className="w-24 h-12 md:w-32 md:h-16 bg-muted rounded-lg flex items-center justify-center">
+                <span className="text-muted-foreground text-xs md:text-sm font-semibold">Clínica {i}</span>
               </div>
             ))}
           </div>
@@ -162,18 +163,18 @@ const Index = () => {
       </section>
 
       {/* Como Funciona */}
-      <section id="funcionalidades" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+      <section id="funcionalidades" className="py-16 md:py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground mb-4">
               Como funciona
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               A Anna conversa com os pacientes da sua clínica de forma natural e humanizada
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
             {[
               {
                 icon: MessageSquare,
@@ -220,16 +221,16 @@ const Index = () => {
       </section>
 
       {/* Benefícios */}
-      <section id="beneficios" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+      <section id="beneficios" className="py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground mb-4 px-2">
               Sua equipe foca no que importa.{" "}
               <span className="text-primary">A Anna cuida do resto.</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
             {[
               { icon: TrendingDown, title: "Reduza faltas", desc: "Lembretes automáticos diminuem no-shows e otimizam sua agenda" },
               { icon: TrendingUp, title: "Aumente produtividade", desc: "Sua equipe ganha tempo para focar em tarefas de maior valor" },
@@ -245,7 +246,7 @@ const Index = () => {
                 whileHover={{ y: -5 }}
               >
                 <Card className="border-border hover:shadow-lg transition-all duration-300 bg-card h-full">
-                  <CardContent className="p-6">
+                  <CardContent className="p-5 md:p-6">
                     <motion.div 
                       className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4"
                       whileHover={{ rotate: 360 }}
@@ -253,7 +254,7 @@ const Index = () => {
                     >
                       <item.icon className="w-6 h-6 text-primary" />
                     </motion.div>
-                    <h3 className="font-semibold text-foreground mb-2 text-lg">
+                    <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
                       {item.title}
                     </h3>
                     <p className="text-sm text-muted-foreground">{item.desc}</p>
@@ -266,23 +267,23 @@ const Index = () => {
       </section>
 
       {/* Depoimentos */}
-      <section id="depoimentos" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+      <section id="depoimentos" className="py-16 md:py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground mb-4">
               Médicos que já usam a Anna
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
             <Card className="border-primary/20 bg-card hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-primary font-bold text-lg">LR</span>
+              <CardContent className="p-6 md:p-8">
+                <div className="flex items-start gap-3 md:gap-4 mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-primary font-bold text-base md:text-lg">LR</span>
                   </div>
                   <div>
-                    <p className="text-lg text-foreground italic mb-3">
+                    <p className="text-base md:text-lg text-foreground italic mb-3">
                       "A Anna mudou completamente nosso fluxo de atendimento."
                     </p>
                     <p className="text-sm font-semibold text-foreground">
@@ -295,13 +296,13 @@ const Index = () => {
             </Card>
 
             <Card className="border-primary/20 bg-card hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-primary font-bold text-lg">RA</span>
+              <CardContent className="p-6 md:p-8">
+                <div className="flex items-start gap-3 md:gap-4 mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-primary font-bold text-base md:text-lg">RA</span>
                   </div>
                   <div>
-                    <p className="text-lg text-foreground italic mb-3">
+                    <p className="text-base md:text-lg text-foreground italic mb-3">
                       "Hoje nenhum paciente fica sem resposta."
                     </p>
                     <p className="text-sm font-semibold text-foreground">
@@ -317,18 +318,18 @@ const Index = () => {
       </section>
 
       {/* CTA Final - Dark */}
-      <section className="py-24 bg-gradient-to-br from-[hsl(var(--hero-bg))] to-[hsl(var(--hero-bg-end))] text-white relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-[hsl(var(--hero-bg))] to-[hsl(var(--hero-bg-end))] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,hsl(122,39%,49%,0.15),transparent_50%)]"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+        <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
+          <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6">
             Transforme o atendimento da sua clínica com IA
           </h2>
-          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-white/80 mb-6 md:mb-8 max-w-2xl mx-auto px-2">
             Junte-se a centenas de clínicas que já automatizaram seu atendimento
           </p>
           <Button 
             size="lg"
-            className="bg-white text-[hsl(var(--hero-bg))] hover:bg-white/90 font-semibold px-8 py-6 text-lg shadow-2xl"
+            className="bg-white text-[hsl(var(--hero-bg))] hover:bg-white/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl w-full sm:w-auto"
           >
             Quero conhecer a Anna
           </Button>
