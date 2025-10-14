@@ -720,12 +720,8 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <img src={logo} alt="123atendi" className="h-12 w-12 rounded-lg" />
-                <div>
-                  <h3 className="text-2xl font-bold">Anna</h3>
-                  <p className="text-background/80 text-sm">by 123atendi</p>
-                </div>
+              <div className="mb-4">
+                <img src={logo} alt="123atendi" className="h-20 w-20 rounded-lg" />
               </div>
               <p className="text-background/60 text-sm">
                 Inteligência artificial para atendimento médico
@@ -735,9 +731,6 @@ const Index = () => {
               <h4 className="font-semibold mb-4">Contato</h4>
               <p className="text-background/80 mb-2 text-sm">
                 Email: contato@123atendi.com.br
-              </p>
-              <p className="text-background/80 text-sm">
-                Site: www.123atendi.com.br
               </p>
             </div>
             <div>
