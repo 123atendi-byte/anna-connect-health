@@ -588,110 +588,80 @@ const Index = () => {
             </motion.h2>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto items-start">
-            <motion.div
-              initial={{ opacity: 0, x: -50, scale: 0.95 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="lg:col-span-1 max-w-xs mx-auto w-full mb-8 lg:mb-0"
+          <div className="max-w-7xl mx-auto">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              plugins={[plugin.current]}
+              className="w-full"
             >
-              <div className="relative">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative rounded-2xl overflow-hidden shadow-2xl"
-                >
-                  <img 
-                    src={whatsappChat} 
-                    alt="Conversa no WhatsApp com Anna" 
-                    className="w-full h-auto object-contain"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                </motion.div>
-                <motion.div
-                  className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl"
-                  animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                />
-              </div>
-            </motion.div>
-
-            <div className="lg:col-span-2">
-              <Carousel
-                opts={{
-                  align: "start",
-                  loop: true,
-                }}
-                plugins={[plugin.current]}
-                className="w-full"
-              >
-                <CarouselContent>
-                  {[
-                    {
-                      initials: "LR",
-                      quote: "A Anna mudou completamente nosso fluxo de atendimento.",
-                      name: "Dra. Lívia Rezende",
-                      specialty: "Pediatra"
-                    },
-                    {
-                      initials: "RA",
-                      quote: "Hoje nenhum paciente fica sem resposta.",
-                      name: "Dr. Rafael Avancini",
-                      specialty: "Traumatologista"
-                    },
-                    {
-                      initials: "RH",
-                      quote: "O agendamento automático revolucionou minha agenda.",
-                      name: "Dr. Rafael Hartman",
-                      specialty: "Traumatologista"
-                    },
-                    {
-                      initials: "FH",
-                      quote: "Anna liberou minha equipe para focar no atendimento.",
-                      name: "Dr. Flavio Hanciau",
-                      specialty: "Traumatologista"
-                    }
-                  ].map((testimonial, i) => (
-                    <CarouselItem key={testimonial.name} className="md:basis-1/2">
-                      <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ delay: i * 0.1, duration: 0.5 }}
-                        whileHover={{ y: -5 }}
-                        className="h-full"
-                      >
-                        <Card className="border-primary/20 bg-card hover:shadow-xl transition-all duration-300 h-full">
-                          <CardContent className="p-6 md:p-8">
-                            <div className="flex items-start gap-3 md:gap-4 mb-4">
-                              <motion.div 
-                                className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
-                                whileHover={{ scale: 1.1, rotate: 360 }}
-                                transition={{ duration: 0.5 }}
-                              >
-                                <span className="text-primary font-bold text-base md:text-lg">{testimonial.initials}</span>
-                              </motion.div>
-                              <div>
-                                <p className="text-base md:text-lg text-foreground italic mb-3">
-                                  "{testimonial.quote}"
-                                </p>
-                                <p className="text-sm font-semibold text-foreground">
-                                  {testimonial.name}
-                                </p>
-                                <p className="text-sm text-muted-foreground">{testimonial.specialty}</p>
-                              </div>
+              <CarouselContent>
+                {[
+                  {
+                    initials: "LR",
+                    quote: "A Anna mudou completamente nosso fluxo de atendimento.",
+                    name: "Dra. Lívia Rezende",
+                    specialty: "Pediatra"
+                  },
+                  {
+                    initials: "RA",
+                    quote: "Hoje nenhum paciente fica sem resposta.",
+                    name: "Dr. Rafael Avancini",
+                    specialty: "Traumatologista"
+                  },
+                  {
+                    initials: "RH",
+                    quote: "O agendamento automático revolucionou minha agenda.",
+                    name: "Dr. Rafael Hartman",
+                    specialty: "Traumatologista"
+                  },
+                  {
+                    initials: "FH",
+                    quote: "Anna liberou minha equipe para focar no atendimento.",
+                    name: "Dr. Flavio Hanciau",
+                    specialty: "Traumatologista"
+                  }
+                ].map((testimonial, i) => (
+                  <CarouselItem key={testimonial.name} className="md:basis-1/2 lg:basis-1/3">
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ delay: i * 0.1, duration: 0.5 }}
+                      whileHover={{ y: -5 }}
+                      className="h-full"
+                    >
+                      <Card className="border-primary/20 bg-card hover:shadow-xl transition-all duration-300 h-full">
+                        <CardContent className="p-6 md:p-8">
+                          <div className="flex items-start gap-3 md:gap-4 mb-4">
+                            <motion.div 
+                              className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
+                              whileHover={{ scale: 1.1, rotate: 360 }}
+                              transition={{ duration: 0.5 }}
+                            >
+                              <span className="text-primary font-bold text-base md:text-lg">{testimonial.initials}</span>
+                            </motion.div>
+                            <div>
+                              <p className="text-base md:text-lg text-foreground italic mb-3">
+                                "{testimonial.quote}"
+                              </p>
+                              <p className="text-sm font-semibold text-foreground">
+                                {testimonial.name}
+                              </p>
+                              <p className="text-sm text-muted-foreground">{testimonial.specialty}</p>
                             </div>
-                          </CardContent>
-                        </Card>
-                      </motion.div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious className="hidden md:flex" />
-                <CarouselNext className="hidden md:flex" />
-              </Carousel>
-            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex" />
+              <CarouselNext className="hidden md:flex" />
+            </Carousel>
           </div>
         </div>
       </section>
