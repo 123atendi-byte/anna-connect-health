@@ -8,6 +8,9 @@ import { FloatingElements } from "@/components/FloatingElements";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import logo from "@/assets/logo-123atendi.jpeg";
+import aiChatbot from "@/assets/ai-chatbot-demo.jpg";
+import aiDashboard from "@/assets/ai-dashboard-demo.jpg";
+import whatsappChat from "@/assets/whatsapp-ai-chat.jpg";
 const Index = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -163,156 +166,295 @@ const Index = () => {
       </section>
 
       {/* Como Funciona */}
-      <section id="funcionalidades" className="py-16 md:py-20 bg-muted/30">
+      <section id="funcionalidades" className="py-16 md:py-20 bg-muted/30 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground mb-4">
+            <motion.h2 
+              className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground mb-4"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
               Como funciona
-            </h2>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+            </motion.h2>
+            <motion.p 
+              className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               A Anna conversa com os pacientes da sua clínica de forma natural e humanizada
-            </p>
+            </motion.p>
           </div>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                icon: MessageSquare,
-                title: "Responde automaticamente",
-                desc: "Atendimento instantâneo no WhatsApp para dúvidas comuns e informações",
-              },
-              {
-                icon: Calendar,
-                title: "Gerencia consultas",
-                desc: "Confirmações automáticas, lembretes e reagendamentos",
-              },
-              {
-                icon: AlertCircle,
-                title: "Prioriza urgências",
-                desc: "Identifica casos urgentes e conecta com a equipe médica",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: i * 0.2, duration: 0.5 }}
-              >
-                <Card className="border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-xl h-full">
-                  <CardContent className="p-8 text-center">
-                    <motion.div 
-                      className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 400 }}
-                    >
-                      <item.icon className="w-8 h-8 text-primary" />
-                    </motion.div>
-                    <h3 className="text-xl font-semibold text-foreground mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-muted-foreground">{item.desc}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto items-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="order-2 lg:order-1"
+            >
+              <div className="grid sm:grid-cols-1 gap-6">
+                {[
+                  {
+                    icon: MessageSquare,
+                    title: "Responde automaticamente",
+                    desc: "Atendimento instantâneo no WhatsApp para dúvidas comuns e informações",
+                  },
+                  {
+                    icon: Calendar,
+                    title: "Gerencia consultas",
+                    desc: "Confirmações automáticas, lembretes e reagendamentos",
+                  },
+                  {
+                    icon: AlertCircle,
+                    title: "Prioriza urgências",
+                    desc: "Identifica casos urgentes e conecta com a equipe médica",
+                  },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: i * 0.15, duration: 0.5 }}
+                  >
+                    <Card className="border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-xl">
+                      <CardContent className="p-6 flex items-start gap-4">
+                        <motion.div 
+                          className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0"
+                          whileHover={{ scale: 1.1, rotate: 360 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                        >
+                          <item.icon className="w-7 h-7 text-primary" />
+                        </motion.div>
+                        <div>
+                          <h3 className="text-lg font-semibold text-foreground mb-2">
+                            {item.title}
+                          </h3>
+                          <p className="text-muted-foreground text-sm">{item.desc}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="order-1 lg:order-2"
+            >
+              <div className="relative">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative rounded-2xl overflow-hidden shadow-2xl"
+                >
+                  <img 
+                    src={aiChatbot} 
+                    alt="Anna AI Chatbot em uso" 
+                    className="w-full h-auto"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </motion.div>
+                <motion.div
+                  className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Benefícios */}
-      <section id="beneficios" className="py-16 md:py-20 bg-background">
+      <section id="beneficios" className="py-16 md:py-20 bg-background overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground mb-4 px-2">
+            <motion.h2 
+              className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground mb-4 px-2"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
               Sua equipe foca no que importa.{" "}
               <span className="text-primary">A Anna cuida do resto.</span>
-            </h2>
+            </motion.h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
-            {[
-              { icon: TrendingDown, title: "Reduza faltas", desc: "Lembretes automáticos diminuem no-shows e otimizam sua agenda" },
-              { icon: TrendingUp, title: "Aumente produtividade", desc: "Sua equipe ganha tempo para focar em tarefas de maior valor" },
-              { icon: Heart, title: "Melhore experiência", desc: "Respostas rápidas e personalizadas aumentam satisfação" },
-              { icon: Clock, title: "Atendimento 24h", desc: "Anna trabalha sem parar, mesmo fora do horário comercial" },
-            ].map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.4 }}
-                whileHover={{ y: -5 }}
-              >
-                <Card className="border-border hover:shadow-lg transition-all duration-300 bg-card h-full">
-                  <CardContent className="p-5 md:p-6">
-                    <motion.div 
-                      className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <item.icon className="w-6 h-6 text-primary" />
-                    </motion.div>
-                    <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">{item.desc}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto items-center mb-12">
+            <motion.div
+              initial={{ opacity: 0, x: -50, scale: 0.95 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              <div className="relative">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative rounded-2xl overflow-hidden shadow-2xl"
+                >
+                  <img 
+                    src={aiDashboard} 
+                    alt="Dashboard de gerenciamento Anna" 
+                    className="w-full h-auto"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </motion.div>
+                <motion.div
+                  className="absolute -top-4 -left-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+                {[
+                  { icon: TrendingDown, title: "Reduza faltas", desc: "Lembretes automáticos diminuem no-shows e otimizam sua agenda" },
+                  { icon: TrendingUp, title: "Aumente produtividade", desc: "Sua equipe ganha tempo para focar em tarefas de maior valor" },
+                  { icon: Heart, title: "Melhore experiência", desc: "Respostas rápidas e personalizadas aumentam satisfação" },
+                  { icon: Clock, title: "Atendimento 24h", desc: "Anna trabalha sem parar, mesmo fora do horário comercial" },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                  >
+                    <Card className="border-border hover:shadow-xl transition-all duration-300 bg-card h-full hover:border-primary/30">
+                      <CardContent className="p-5 md:p-6">
+                        <motion.div 
+                          className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4"
+                          whileHover={{ rotate: 360, scale: 1.1 }}
+                          transition={{ duration: 0.6 }}
+                        >
+                          <item.icon className="w-6 h-6 text-primary" />
+                        </motion.div>
+                        <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">{item.desc}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Depoimentos */}
-      <section id="depoimentos" className="py-16 md:py-20 bg-muted/30">
+      <section id="depoimentos" className="py-16 md:py-20 bg-muted/30 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground mb-4">
+            <motion.h2 
+              className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground mb-4"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
               Médicos que já usam a Anna
-            </h2>
+            </motion.h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
-            <Card className="border-primary/20 bg-card hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-6 md:p-8">
-                <div className="flex items-start gap-3 md:gap-4 mb-4">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-primary font-bold text-base md:text-lg">LR</span>
-                  </div>
-                  <div>
-                    <p className="text-base md:text-lg text-foreground italic mb-3">
-                      "A Anna mudou completamente nosso fluxo de atendimento."
-                    </p>
-                    <p className="text-sm font-semibold text-foreground">
-                      Dra. Lívia Rezende
-                    </p>
-                    <p className="text-sm text-muted-foreground">Pediatra</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="grid lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50, scale: 0.95 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="lg:col-span-1"
+            >
+              <div className="relative">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative rounded-2xl overflow-hidden shadow-2xl"
+                >
+                  <img 
+                    src={whatsappChat} 
+                    alt="Conversa no WhatsApp com Anna" 
+                    className="w-full h-auto"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                </motion.div>
+                <motion.div
+                  className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                />
+              </div>
+            </motion.div>
 
-            <Card className="border-primary/20 bg-card hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-6 md:p-8">
-                <div className="flex items-start gap-3 md:gap-4 mb-4">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-primary font-bold text-base md:text-lg">RA</span>
-                  </div>
-                  <div>
-                    <p className="text-base md:text-lg text-foreground italic mb-3">
-                      "Hoje nenhum paciente fica sem resposta."
-                    </p>
-                    <p className="text-sm font-semibold text-foreground">
-                      Dr. Rafael Avancini
-                    </p>
-                    <p className="text-sm text-muted-foreground">Ortopedista</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <div className="lg:col-span-2 grid md:grid-cols-2 gap-6 md:gap-8">
+              {[
+                {
+                  initials: "LR",
+                  quote: "A Anna mudou completamente nosso fluxo de atendimento.",
+                  name: "Dra. Lívia Rezende",
+                  specialty: "Pediatra"
+                },
+                {
+                  initials: "RA",
+                  quote: "Hoje nenhum paciente fica sem resposta.",
+                  name: "Dr. Rafael Avancini",
+                  specialty: "Ortopedista"
+                }
+              ].map((testimonial, i) => (
+                <motion.div
+                  key={testimonial.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: i * 0.2, duration: 0.5 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <Card className="border-primary/20 bg-card hover:shadow-xl transition-all duration-300 h-full">
+                    <CardContent className="p-6 md:p-8">
+                      <div className="flex items-start gap-3 md:gap-4 mb-4">
+                        <motion.div 
+                          className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
+                          whileHover={{ scale: 1.1, rotate: 360 }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <span className="text-primary font-bold text-base md:text-lg">{testimonial.initials}</span>
+                        </motion.div>
+                        <div>
+                          <p className="text-base md:text-lg text-foreground italic mb-3">
+                            "{testimonial.quote}"
+                          </p>
+                          <p className="text-sm font-semibold text-foreground">
+                            {testimonial.name}
+                          </p>
+                          <p className="text-sm text-muted-foreground">{testimonial.specialty}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
