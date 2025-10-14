@@ -368,6 +368,94 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Funcionalidades Principais */}
+      <section className="py-16 md:py-20 bg-muted/30 overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 md:mb-16">
+            <motion.h2 
+              className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground mb-4"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
+              O que a Anna pode fazer por você
+            </motion.h2>
+            <motion.p 
+              className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Funcionalidades Principais
+            </motion.p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
+            {[
+              {
+                icon: Clock,
+                title: "Atendimento 24/7",
+                desc: "Anna está disponível para responder às dúvidas dos pacientes, agendar consultas e fornecer informações relevantes a qualquer hora do dia, todos os dias da semana."
+              },
+              {
+                icon: Zap,
+                title: "Integração com Sistemas Existentes",
+                desc: "Nossa solução se integra perfeitamente com prontuários eletrônicos, sistemas de gestão e outras ferramentas utilizadas pela sua clínica, garantindo uma operação fluida."
+              },
+              {
+                icon: Calendar,
+                title: "Agendamento e Acompanhamento Automatizado",
+                desc: "Os pacientes agendam diretamente pelo WhatsApp. Enviamos lembretes automáticos para reduzir faltas e otimizar a agenda da sua clínica."
+              },
+              {
+                icon: TrendingUp,
+                title: "Relatórios e Análises",
+                desc: "Dashboards detalhados que permitem acompanhar métricas de desempenho, histórico de interações e outros indicadores essenciais para uma gestão eficiente."
+              },
+              {
+                icon: MessageSquare,
+                title: "Centralização de Mensagens",
+                desc: "Consolidamos todas as comunicações de WhatsApp, Instagram e Facebook em uma única plataforma, garantindo que nenhum paciente seja ignorado."
+              },
+              {
+                icon: Heart,
+                title: "CRM Integrado",
+                desc: "Todo o histórico de interações dos pacientes em um só lugar. Atendimento mais personalizado e ágil, facilitando o acompanhamento e engajamento."
+              }
+            ].map((feature, i) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                whileHover={{ y: -5 }}
+              >
+                <Card className="border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-xl h-full">
+                  <CardContent className="p-6 md:p-8">
+                    <motion.div 
+                      className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-4"
+                      whileHover={{ scale: 1.1, rotate: 360 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    >
+                      <feature.icon className="w-7 h-7 text-primary" />
+                    </motion.div>
+                    <h3 className="text-lg md:text-xl font-semibold text-foreground mb-3">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                      {feature.desc}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Depoimentos */}
       <section id="depoimentos" className="py-16 md:py-20 bg-muted/30 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6">
