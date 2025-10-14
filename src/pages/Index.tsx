@@ -92,15 +92,14 @@ const Index = () => {
 
             {/* Hero Title with Typewriter */}
             <motion.h1 
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
+              className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              O primeiro passo para cuidar melhor
+              O primeiro passo para cuidar melhor dos seus pacientes
               <br />
-              dos seus pacientes é ter um
-              <br />
+              é ter um{" "}
               <span className="text-primary inline-block relative">
                 <TypewriterText 
                   texts={["atendimento inteligente"]}
