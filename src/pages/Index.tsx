@@ -704,7 +704,7 @@ const Index = () => {
             Transforme o atendimento da sua clínica com a Anna, a Inteligência Artificial da 123atendi
           </h2>
           <p className="text-base md:text-lg text-white/80 mb-6 md:mb-8 max-w-2xl mx-auto px-2">
-            Junte-se a centenas de clínicas que já automatizaram seu atendimento
+            Centralize o atendimento da sua clínica em uma solução inteligente que automatiza agendamentos, confirmações e todo o contato com seus pacientes.
           </p>
           <Button 
             size="lg"
