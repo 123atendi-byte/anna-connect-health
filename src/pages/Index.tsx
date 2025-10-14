@@ -7,6 +7,7 @@ import { TypewriterText } from "@/components/TypewriterText";
 import { FloatingElements } from "@/components/FloatingElements";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import logo from "@/assets/logo-123atendi.jpeg";
 const Index = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -91,7 +92,7 @@ const Index = () => {
               Atendimento médico com{" "}
               <span className="text-primary inline-block relative">
                 <TypewriterText 
-                  texts={["inteligência artificial", "tecnologia avançada", "Anna IA"]}
+                  texts={["Inteligência Artificial"]}
                   className="text-primary"
                 />
                 <motion.span 
@@ -330,11 +331,14 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 className="text-2xl font-bold mb-4">Anna</h3>
-              <p className="text-background/80 text-sm">
-                by 123atendi
-              </p>
-              <p className="text-background/60 text-sm mt-2">
+              <div className="flex items-center gap-3 mb-4">
+                <img src={logo} alt="123atendi" className="h-12 w-12 rounded-lg" />
+                <div>
+                  <h3 className="text-2xl font-bold">Anna</h3>
+                  <p className="text-background/80 text-sm">by 123atendi</p>
+                </div>
+              </div>
+              <p className="text-background/60 text-sm">
                 Inteligência artificial para atendimento médico
               </p>
             </div>
