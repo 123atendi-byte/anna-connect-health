@@ -109,7 +109,7 @@ const Index = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              A IA Anna responde pacientes, confirma consultas e mantém sua clínica sempre conectada — tudo pelo WhatsApp.
+              Desenvolvida pela 123atendi, Anna é uma atendente de inteligência artificial criada para clínicas médicas. Responde pacientes, confirma consultas e mantém sua clínica ativa no WhatsApp 24 horas por dia.
             </motion.p>
             
             <motion.div
