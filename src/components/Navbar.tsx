@@ -1,18 +1,10 @@
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo-123atendi.jpeg";
 
 const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[hsl(var(--hero-bg))]/95 backdrop-blur-sm border-b border-white/10">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="123atendi" className="h-10 w-10 rounded-lg" />
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-white">Anna</span>
-              <span className="text-xs text-white/60">by 123atendi</span>
-            </div>
-          </div>
           
           <div className="hidden md:flex items-center gap-8">
             <a href="#funcionalidades" className="text-white/80 hover:text-white transition-colors text-sm font-medium">
