@@ -594,7 +594,7 @@ const Index = () => {
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="lg:col-span-1"
+              className="lg:col-span-1 max-w-md mx-auto w-full"
             >
               <div className="relative">
                 <motion.div
@@ -605,7 +605,7 @@ const Index = () => {
                   <img 
                     src={whatsappChat} 
                     alt="Conversa no WhatsApp com Anna" 
-                    className="w-full h-auto"
+                    className="w-full h-auto object-contain"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                 </motion.div>
