@@ -89,10 +89,10 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Atendimento médico com{" "}
+              O primeiro passo para cuidar melhor dos seus pacientes é ter um{" "}
               <span className="text-primary inline-block relative">
                 <TypewriterText 
-                  texts={["Inteligência Artificial"]}
+                  texts={["atendimento inteligente"]}
                   className="text-primary"
                 />
                 <motion.span 
