@@ -8,7 +8,10 @@ export const initFacebookPixel = () => {
       autoConfig: true,
       debug: false, // Mude para true para debug no console
     });
-    // Não dispara pageView aqui, deixa o PageTracker fazer isso
+
+    // Dispara PageView imediatamente após inicializar
+    ReactPixel.pageView();
+    console.log('[Facebook Pixel] PageView disparado no carregamento inicial');
   }
 };
 

@@ -8,6 +8,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import logo123atendi from "@/assets/logo-123atendi.jpeg";
 import { trackLead, trackContact, trackViewContent } from "@/lib/facebook-pixel";
+import { trackLead as trackGoogleAdsLead, trackFormSubmit, trackWhatsAppClick } from "@/lib/google-ads";
 
 // Verified badge component (WhatsApp-style rosette)
 const VerifiedBadge = ({ size = 28 }: { size?: number }) => {
@@ -74,6 +75,10 @@ const FormularioContato = () => {
           currency: "BRL",
         });
 
+        // Rastrear evento de Lead no Google Ads
+        trackGoogleAdsLead(tipo, 1);
+        trackFormSubmit("Formulário de Contato", tipo);
+
         toast({
           title: "Mensagem enviada com sucesso!",
           description: "Redirecionando para WhatsApp...",
@@ -87,11 +92,14 @@ const FormularioContato = () => {
 
         // Redireciona para WhatsApp após 1 segundo
         setTimeout(() => {
-          // Rastrear evento de Contact (redirecionamento WhatsApp)
+          // Rastrear evento de Contact (redirecionamento WhatsApp) - Facebook Pixel
           trackContact({
             content_name: "WhatsApp Redirect",
             content_category: tipo,
           });
+
+          // Rastrear clique no WhatsApp - Google Ads
+          trackWhatsAppClick("Formulário de Contato");
 
           window.open(
             `https://api.whatsapp.com/send/?phone=555121609890&text=${encodeURIComponent(mensagemWhatsApp)}`,

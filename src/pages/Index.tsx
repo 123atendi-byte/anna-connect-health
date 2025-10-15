@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { MessageSquare, Calendar, AlertCircle, TrendingDown, TrendingUp, Heart, Clock, Sparkles, Bot, Zap, ChevronLeft, ChevronRight } from "lucide-react";
+import { MessageSquare, Calendar, AlertCircle, TrendingDown, TrendingUp, Heart, Clock, Sparkles, Bot, Zap, ChevronLeft, ChevronRight, ArrowUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { TypewriterText } from "@/components/TypewriterText";
 import { FloatingElements } from "@/components/FloatingElements";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
@@ -15,25 +15,39 @@ import aiDashboard from "@/assets/ai-dashboard-demo.jpg";
 import whatsappChat from "@/assets/whatsapp-ai-chat.jpg";
 import { useNavigate } from "react-router-dom";
 import { trackEvent } from "@/lib/facebook-pixel";
+import { trackCTAClick, trackCheckoutInitiated } from "@/lib/google-ads";
 
 const Index = () => {
   const navigate = useNavigate();
 
-  // Função para rastrear cliques em CTAs
+  // Função para rastrear cliques em CTAs (Facebook Pixel + Google Ads)
   const handleCTAClick = (tipo: string, buttonName: string) => {
+    // Rastreamento Facebook Pixel
     trackEvent('InitiateCheckout', {
       content_name: buttonName,
       content_category: 'CTA Button',
       value: 1,
       currency: 'BRL',
     });
+
+    // Rastreamento Google Ads
+    trackCTAClick(buttonName, tipo);
+    trackCheckoutInitiated({
+      button_name: buttonName,
+      button_type: tipo,
+      value: 1,
+      currency: 'BRL',
+    });
+
     navigate(`/contato?tipo=${tipo}`);
   };
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const plugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
   );
 
+  // Mouse movement handler
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -41,6 +55,20 @@ const Index = () => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
+  // Scroll handler para mostrar/ocultar botão de voltar ao topo
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Função para voltar ao topo
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
@@ -744,6 +772,9 @@ const Index = () => {
               <p className="text-background/80 mb-2 text-sm">
                 Email: contato@123atendi.com.br
               </p>
+              <p className="text-background/80 text-sm">
+                CNPJ: 61.133.225/0001-00
+              </p>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Links</h4>
@@ -769,6 +800,23 @@ const Index = () => {
       >
         <MessageSquare className="w-6 h-6" />
       </button>
+
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            onClick={scrollToTop}
+            className="fixed bottom-24 right-6 bg-foreground hover:bg-foreground/90 text-background w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all z-50"
+            aria-label="Voltar ao topo"
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.5, y: 20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ArrowUp className="w-6 h-6" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
