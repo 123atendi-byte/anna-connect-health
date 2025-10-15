@@ -111,7 +111,7 @@ const Index = () => {
               {/* Versão Desktop - mantém original */}
               <span className="hidden md:inline">
                 O primeiro passo para cuidar melhor<br />
-                dos seus pacientes é ter um<br />
+                dos seus pacientes é ter<br />
               </span>
               
               <span className="text-primary inline-block relative">
