@@ -2,7 +2,6 @@ version: "3.8"
 
 services:
   anna-site:
-    image: anna-connect-health:latest
     build:
       context: .
       dockerfile: Dockerfile
