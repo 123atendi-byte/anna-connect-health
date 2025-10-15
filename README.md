@@ -1,73 +1,54 @@
-# Welcome to your Lovable project
+# Anna Connect Health
 
-## Project info
+Sistema web de inteligência artificial para atendimento médico da 123atendi.
 
-**URL**: https://lovable.dev/projects/d4b5e1ad-fa5f-4f3d-92fb-2caf59f43e6d
+## 🚀 Tecnologias
 
-## How can I edit this code?
+- **React 18** + TypeScript
+- **Vite** - Build tool
+- **Tailwind CSS** - Estilização
+- **shadcn/ui** - Componentes UI
+- **React Router** - Navegação
+- **TanStack Query** - Gerenciamento de estado
+- **Framer Motion** - Animações
+- **React Hook Form + Zod** - Formulários e validação
 
-There are several ways of editing your application.
+## 📦 Instalação
 
-**Use Lovable**
+```bash
+# Clone o repositório
+git clone https://github.com/123atendi-byte/anna-connect-health.git
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d4b5e1ad-fa5f-4f3d-92fb-2caf59f43e6d) and start prompting.
+# Entre na pasta do projeto
+cd anna-connect-health
 
-Changes made via Lovable will be committed automatically to this repo.
+# Instale as dependências
+npm install
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 🐳 Docker
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Para rodar com Docker:
 
-**Use GitHub Codespaces**
+```bash
+# Build da imagem
+docker build -t anna-connect-health .
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Run do container
+docker run -p 8080:8080 anna-connect-health
+```
 
-## What technologies are used for this project?
+## 📝 Scripts disponíveis
 
-This project is built with:
+- `npm run dev` - Inicia servidor de desenvolvimento
+- `npm run build` - Build para produção
+- `npm run build:dev` - Build em modo desenvolvimento
+- `npm run preview` - Preview do build
+- `npm run lint` - Executa linter
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📄 Licença
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/d4b5e1ad-fa5f-4f3d-92fb-2caf59f43e6d) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Propriedade de 123atendi

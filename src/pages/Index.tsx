@@ -135,11 +135,14 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="px-4"
             >
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-white text-[hsl(var(--hero-bg))] hover:bg-white/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl hover:scale-105 transition-all w-full sm:w-auto"
+                asChild
               >
-                Conheça a Anna
+                <a href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna" target="_blank" rel="noopener noreferrer">
+                  Conheça a Anna
+                </a>
               </Button>
             </motion.div>
           </div>
@@ -509,12 +512,15 @@ const Index = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                 >
-                  <Button 
+                  <Button
                     size="lg"
                     className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg shadow-xl hover:scale-105 transition-all group"
+                    asChild
                   >
-                    <MessageSquare className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                    Agende uma demonstração
+                    <a href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna" target="_blank" rel="noopener noreferrer">
+                      <MessageSquare className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                      Agende uma demonstração
+                    </a>
                   </Button>
                 </motion.div>
               </motion.div>
@@ -676,11 +682,14 @@ const Index = () => {
           <p className="text-base md:text-lg text-white/80 mb-6 md:mb-8 max-w-2xl mx-auto px-2">
             Centralize o atendimento da sua clínica em uma solução inteligente que automatiza agendamentos, confirmações e todo o contato com seus pacientes.
           </p>
-          <Button 
+          <Button
             size="lg"
             className="bg-white text-[hsl(var(--hero-bg))] hover:bg-white/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl w-full sm:w-auto"
+            asChild
           >
-            Quero conhecer a Anna
+            <a href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna" target="_blank" rel="noopener noreferrer">
+              Quero conhecer a Anna
+            </a>
           </Button>
         </div>
       </section>
@@ -721,7 +730,7 @@ const Index = () => {
 
       {/* WhatsApp Fixed Button */}
       <a
-        href="https://wa.me/5511999999999"
+        href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 bg-primary hover:bg-primary/90 text-primary-foreground w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all z-50"
