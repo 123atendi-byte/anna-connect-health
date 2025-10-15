@@ -34,7 +34,7 @@ const Index = () => {
       <Navbar />
 
       {/* Hero Section - Light Medical Background with Animations */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[hsl(var(--hero-bg))] to-[hsl(var(--hero-bg-end))] pt-24 pb-16 md:pt-32 md:pb-20 lg:pt-40 lg:pb-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[hsl(var(--hero-bg))] to-[hsl(var(--hero-bg-end))] pt-24 pb-28 md:pt-32 md:pb-20 lg:pt-40 lg:pb-32">
         {/* Animated gradient overlay */}
         <motion.div 
           className="absolute inset-0 opacity-20"
@@ -68,7 +68,7 @@ const Index = () => {
           <div className="max-w-5xl mx-auto text-center sm:text-left md:text-center">
             {/* Lead Capture Buttons */}
             <motion.div 
-              className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8"
+              className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 md:mb-8"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -97,7 +97,7 @@ const Index = () => {
 
             {/* Hero Title with Typewriter */}
             <motion.h1 
-              className="text-xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight"
+              className="text-xl md:text-4xl lg:text-5xl font-bold text-foreground mb-10 md:mb-6 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -128,7 +128,7 @@ const Index = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-sm sm:text-base md:text-lg text-muted-foreground mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto px-2"
+              className="text-sm sm:text-base md:text-lg text-muted-foreground mb-14 md:mb-10 leading-relaxed max-w-3xl mx-auto px-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -140,7 +140,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="px-4 flex flex-col sm:flex-row gap-4 items-center justify-center"
+              className="px-4 flex flex-col sm:flex-row gap-4 items-center justify-center mb-8 md:mb-0"
             >
               <Button
                 size="lg"
