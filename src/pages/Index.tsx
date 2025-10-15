@@ -33,16 +33,16 @@ const Index = () => {
     <div className="min-h-screen bg-background overflow-hidden">
       <Navbar />
 
-      {/* Hero Section - Dark Background with Animations */}
+      {/* Hero Section - Light Medical Background with Animations */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[hsl(var(--hero-bg))] to-[hsl(var(--hero-bg-end))] pt-24 pb-16 md:pt-32 md:pb-20 lg:pt-40 lg:pb-32">
         {/* Animated gradient overlay */}
         <motion.div 
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-20"
           animate={{
             background: [
-              "radial-gradient(circle at 30% 50%, hsl(122, 39%, 49%, 0.15), transparent 50%)",
-              "radial-gradient(circle at 70% 50%, hsl(122, 39%, 49%, 0.15), transparent 50%)",
-              "radial-gradient(circle at 30% 50%, hsl(122, 39%, 49%, 0.15), transparent 50%)",
+              "radial-gradient(circle at 30% 50%, hsl(122, 39%, 69%, 0.2), transparent 50%)",
+              "radial-gradient(circle at 70% 50%, hsl(200, 60%, 75%, 0.2), transparent 50%)",
+              "radial-gradient(circle at 30% 50%, hsl(122, 39%, 69%, 0.2), transparent 50%)",
             ],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -50,14 +50,14 @@ const Index = () => {
 
         {/* Mouse follower gradient */}
         <motion.div
-          className="absolute w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none"
+          className="absolute w-96 h-96 rounded-full blur-3xl opacity-15 pointer-events-none"
           animate={{
             x: mousePosition.x - 192,
             y: mousePosition.y - 192,
           }}
           transition={{ type: "spring", damping: 30, stiffness: 200 }}
           style={{
-            background: "radial-gradient(circle, hsl(122, 39%, 49%), transparent 70%)",
+            background: "radial-gradient(circle, hsl(122, 50%, 70%), transparent 70%)",
           }}
         />
 
@@ -87,7 +87,7 @@ const Index = () => {
                   <Button
                     variant="outline"
                     onClick={() => navigate(`/contato?tipo=${item.tipo}`)}
-                    className="bg-white/10 text-white border-white/30 hover:bg-white/20 hover:border-white/50 px-4 md:px-6 py-2 backdrop-blur-sm font-medium transition-all hover:scale-105"
+                    className="bg-white text-primary border-primary/30 hover:bg-primary/10 hover:border-primary px-4 md:px-6 py-2 font-medium transition-all hover:scale-105 shadow-sm"
                   >
                     {item.label}
                   </Button>
@@ -97,7 +97,7 @@ const Index = () => {
 
             {/* Hero Title with Typewriter */}
             <motion.h1 
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -112,7 +112,7 @@ const Index = () => {
                   className="text-primary"
                 />
                 <motion.span 
-                  className="absolute bottom-0 left-0 w-full h-1 bg-primary/30 blur-sm"
+                  className="absolute bottom-0 left-0 w-full h-1 bg-primary/40 blur-sm"
                   animate={{ scaleX: [0, 1, 0] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 />
@@ -120,7 +120,7 @@ const Index = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-sm sm:text-base md:text-lg text-white/80 mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto px-2"
+              className="text-sm sm:text-base md:text-lg text-muted-foreground mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto px-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -136,7 +136,7 @@ const Index = () => {
             >
               <Button
                 size="lg"
-                className="bg-white text-[hsl(var(--hero-bg))] hover:bg-white/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl hover:scale-105 transition-all w-full sm:w-auto"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all w-full sm:w-auto"
                 asChild
               >
                 <a href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna" target="_blank" rel="noopener noreferrer">
