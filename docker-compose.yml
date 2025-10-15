@@ -2,9 +2,7 @@ version: "3.8"
 
 services:
   anna-site:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: 123atendi/anna-connect-health:latest
     networks:
       - externa
     deploy:
