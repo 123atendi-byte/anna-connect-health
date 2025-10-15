@@ -40,8 +40,8 @@ Site da empresa 123atendi - IA Anna para atendimento médico
     --radius: 0.75rem;
     
     /* Light medical hero background */
-    --hero-bg: 180 50% 97%;
-    --hero-bg-end: 150 40% 95%;
+    --hero-bg: 180 50% 94%;
+    --hero-bg-end: 150 40% 92%;
     
     /* Custom design tokens */
     --gradient-hero: linear-gradient(135deg, hsl(var(--hero-bg)), hsl(var(--hero-bg-end)));
