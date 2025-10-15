@@ -671,19 +671,19 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Final - Dark */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-[hsl(var(--hero-bg))] to-[hsl(var(--hero-bg-end))] text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,hsl(122,39%,49%,0.15),transparent_50%)]"></div>
+      {/* CTA Final - Dark Green */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-primary to-[hsl(122,45%,40%)] text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,hsl(122,50%,60%,0.2),transparent_50%)]"></div>
         <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
-          <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6">
+          <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6 text-white">
             Transforme o atendimento da sua clínica com a Anna, a Inteligência Artificial da 123atendi
           </h2>
-          <p className="text-base md:text-lg text-white/80 mb-6 md:mb-8 max-w-2xl mx-auto px-2">
+          <p className="text-base md:text-lg text-white/90 mb-6 md:mb-8 max-w-2xl mx-auto px-2">
             Centralize o atendimento da sua clínica em uma solução inteligente que automatiza agendamentos, confirmações e todo o contato com seus pacientes.
           </p>
           <Button
             size="lg"
-            className="bg-white text-[hsl(var(--hero-bg))] hover:bg-white/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl w-full sm:w-auto"
+            className="bg-white text-primary hover:bg-white/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl w-full sm:w-auto hover:scale-105 transition-all"
             asChild
           >
             <a href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna" target="_blank" rel="noopener noreferrer">
