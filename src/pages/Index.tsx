@@ -13,7 +13,9 @@ import logo from "@/assets/logo-123atendi.jpeg";
 import aiChatbot from "@/assets/ai-chatbot-demo.jpg";
 import aiDashboard from "@/assets/ai-dashboard-demo.jpg";
 import whatsappChat from "@/assets/whatsapp-ai-chat.jpg";
+import { useNavigate } from "react-router-dom";
 const Index = () => {
+  const navigate = useNavigate();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const plugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
@@ -64,17 +66,17 @@ const Index = () => {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-5xl mx-auto text-center sm:text-left md:text-center">
-            {/* Tags with stagger animation */}
+            {/* Lead Capture Buttons */}
             <motion.div 
-              className="flex flex-wrap justify-center gap-3 mb-8"
+              className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
               {[
-                { icon: Bot, label: "Chatbot" },
-                { icon: Zap, label: "Automação Inteligente" },
-                { icon: Sparkles, label: "IA" },
+                { label: "Quero saber mais", tipo: "saber-mais" },
+                { label: "Como funciona", tipo: "como-funciona" },
+                { label: "Quero contratar", tipo: "contratar" },
               ].map((item, i) => (
                 <motion.div
                   key={item.label}
@@ -82,10 +84,13 @@ const Index = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.1, duration: 0.4 }}
                 >
-                  <Badge variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20 px-4 py-2 backdrop-blur-sm">
-                    <item.icon className="w-4 h-4 mr-2" />
+                  <Button
+                    variant="outline"
+                    onClick={() => navigate(`/contato?tipo=${item.tipo}`)}
+                    className="bg-white/10 text-white border-white/30 hover:bg-white/20 hover:border-white/50 px-4 md:px-6 py-2 backdrop-blur-sm font-medium transition-all hover:scale-105"
+                  >
                     {item.label}
-                  </Badge>
+                  </Button>
                 </motion.div>
               ))}
             </motion.div>
