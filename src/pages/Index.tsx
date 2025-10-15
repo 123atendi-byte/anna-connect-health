@@ -145,11 +145,9 @@ const Index = () => {
               <Button
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all w-full sm:w-auto"
-                asChild
+                onClick={() => navigate("/contato?tipo=conhecer-anna")}
               >
-                <a href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna" target="_blank" rel="noopener noreferrer">
-                  Conheça a Anna
-                </a>
+                Conheça a Anna
               </Button>
               <Button
                 size="lg"
@@ -526,16 +524,15 @@ const Index = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.5 }}
+                  className="w-full flex justify-center lg:justify-start"
                 >
                   <Button
                     size="lg"
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg shadow-xl hover:scale-105 transition-all group"
-                    asChild
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 md:px-8 py-5 md:py-6 text-base md:text-lg shadow-xl hover:scale-105 transition-all group w-full sm:w-auto"
+                    onClick={() => navigate("/contato?tipo=demonstracao")}
                   >
-                    <a href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna" target="_blank" rel="noopener noreferrer">
-                      <MessageSquare className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                      Agende uma demonstração
-                    </a>
+                    <MessageSquare className="w-4 h-4 md:w-5 md:h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                    Agende uma demonstração
                   </Button>
                 </motion.div>
               </motion.div>
@@ -701,11 +698,9 @@ const Index = () => {
             <Button
               size="lg"
               className="bg-white text-primary hover:bg-white/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl w-full sm:w-auto hover:scale-105 transition-all"
-              asChild
+              onClick={() => navigate("/contato?tipo=conhecer-anna")}
             >
-              <a href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna" target="_blank" rel="noopener noreferrer">
-                Quero conhecer a Anna
-              </a>
+              Quero conhecer a Anna
             </Button>
             <Button
               size="lg"
@@ -739,10 +734,10 @@ const Index = () => {
             </div>
             <div>
               <h4 className="font-semibold mb-4">Links</h4>
-              <a href="#" className="block text-background/80 hover:text-background mb-2 transition-colors text-sm">
+              <a href="/politicas-privacidade" className="block text-background/80 hover:text-background mb-2 transition-colors text-sm">
                 Política de Privacidade
               </a>
-              <a href="#" className="block text-background/80 hover:text-background transition-colors text-sm">
+              <a href="/termos-de-uso" className="block text-background/80 hover:text-background transition-colors text-sm">
                 Termos de Uso
               </a>
             </div>
@@ -753,16 +748,14 @@ const Index = () => {
         </div>
       </footer>
 
-      {/* WhatsApp Fixed Button */}
-      <a
-        href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna"
-        target="_blank"
-        rel="noopener noreferrer"
+      {/* Contact Fixed Button */}
+      <button
+        onClick={() => navigate("/contato?tipo=contato")}
         className="fixed bottom-6 right-6 bg-primary hover:bg-primary/90 text-primary-foreground w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all z-50"
-        aria-label="Falar no WhatsApp"
+        aria-label="Entre em contato"
       >
         <MessageSquare className="w-6 h-6" />
-      </a>
+      </button>
     </div>
   );
 };

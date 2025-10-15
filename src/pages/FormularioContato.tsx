@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import logo123atendi from "@/assets/logo-123atendi.jpeg";
 
@@ -34,8 +34,11 @@ const VerifiedBadge = ({ size = 28 }: { size?: number }) => {
 const FormularioContato = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const webhookUrl = ""; // Configure seu webhook aqui
-  
+  const [searchParams] = useSearchParams();
+  const tipo = searchParams.get("tipo") || "contato";
+  const webhookUrl = "https://webhook.123atendi.com.br/webhook/annaleads";
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -45,40 +48,67 @@ const FormularioContato = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    console.log("Formulário enviado:", formData);
-    
-    // Envia para webhook se configurado
-    if (webhookUrl) {
-      try {
-        await fetch(webhookUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          mode: "no-cors",
-          body: JSON.stringify({
-            ...formData,
-            timestamp: new Date().toISOString(),
-          }),
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          tipo: tipo,
+          timestamp: new Date().toISOString(),
+          origem: "Site Anna Connect Health",
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Mensagem enviada com sucesso!",
+          description: "Redirecionando para WhatsApp...",
         });
-        console.log("Dados enviados para webhook");
-      } catch (error) {
-        console.error("Erro ao enviar para webhook:", error);
+
+        // Extrai o primeiro nome
+        const primeiroNome = formData.nome.split(" ")[0];
+
+        // Mensagem para WhatsApp
+        const mensagemWhatsApp = `Oi, gostaria de saber mais sobre a Anna, me chamo ${primeiroNome}.`;
+
+        // Redireciona para WhatsApp após 1 segundo
+        setTimeout(() => {
+          window.open(
+            `https://api.whatsapp.com/send/?phone=555121609890&text=${encodeURIComponent(mensagemWhatsApp)}`,
+            "_blank"
+          );
+
+          // Limpa o formulário
+          setFormData({
+            nome: "",
+            email: "",
+            telefone: "",
+            pacientesMes: "",
+          });
+
+          // Redireciona para home após 2 segundos
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        }, 1000);
+      } else {
+        throw new Error("Erro ao enviar formulário");
       }
+    } catch (error) {
+      console.error("Erro ao enviar para webhook:", error);
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Por favor, tente novamente mais tarde.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
-    
-    toast({
-      title: "Mensagem enviada!",
-      description: "Redirecionando para WhatsApp...",
-    });
-    
-    // Redireciona para WhatsApp com mensagem pré-formatada
-    const mensagemWhatsApp = `Olá! Meu nome é ${formData.nome}. Email: ${formData.email}. Telefone: ${formData.telefone}. Atendo ${formData.pacientesMes} pacientes por mês.`;
-    window.open(
-      `https://api.whatsapp.com/send/?phone=555121609890&text=${encodeURIComponent(mensagemWhatsApp)}`,
-      "_blank"
-    );
   };
 
   const handleChange = (field: string, value: string) => {
@@ -115,17 +145,20 @@ const FormularioContato = () => {
           <div className="bg-white pt-12 pb-6 px-6 text-center border-b">
             <div className="flex justify-center mb-4">
               <div className="relative">
-                <img 
-                  src={logo123atendi} 
-                  alt="123atendi" 
+                <img
+                  src={logo123atendi}
+                  alt="123atendi"
                   className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
                 />
               </div>
             </div>
-            <div className="flex items-center justify-center gap-1.5">
+            <div className="flex items-center justify-center gap-1.5 mb-3">
               <h1 className="text-2xl font-bold text-gray-900">123atendi</h1>
               <VerifiedBadge size={32} />
             </div>
+            <p className="text-base text-gray-600 font-medium">
+              Anna - Inteligência artificial para clínicas
+            </p>
           </div>
 
           {/* Form */}
@@ -175,9 +208,10 @@ const FormularioContato = () => {
 
               <Button
                 type="submit"
-                className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-medium py-6 rounded-full text-base"
+                disabled={isSubmitting}
+                className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-medium py-6 rounded-full text-base disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Iniciar conversa
+                {isSubmitting ? "Enviando..." : "Enviar mensagem"}
               </Button>
             </form>
           </div>
