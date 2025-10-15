@@ -105,18 +105,18 @@ const Index = () => {
               {/* Versão Mobile - 3 linhas compactas */}
               <span className="md:hidden">
                 O primeiro passo para cuidar melhor<br />
-                dos seus pacientes é ter<br />
+                dos seus pacientes é ter um<br />
               </span>
               
               {/* Versão Desktop - mantém original */}
               <span className="hidden md:inline">
                 O primeiro passo para cuidar melhor<br />
-                dos seus pacientes é ter<br />
+                dos seus pacientes é ter um<br />
               </span>
               
               <span className="text-primary inline-block relative">
                 <TypewriterText 
-                  texts={["um atendimento inteligente"]}
+                  texts={["atendimento inteligente"]}
                   className="text-primary"
                 />
                 <motion.span 
