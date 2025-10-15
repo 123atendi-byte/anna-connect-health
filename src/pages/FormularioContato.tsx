@@ -2,11 +2,34 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import logo123atendi from "@/assets/logo-123atendi.jpeg";
+
+// Verified badge component (WhatsApp-style rosette)
+const VerifiedBadge = ({ size = 28 }: { size?: number }) => {
+  const center = 50;
+  const outer = 48;
+  const inner = 40;
+  const spikes = 12;
+  const total = spikes * 2;
+  const pts: string[] = [];
+  for (let i = 0; i < total; i++) {
+    const r = i % 2 === 0 ? outer : inner;
+    const ang = (Math.PI * 2 * i) / total - Math.PI / 2;
+    const x = center + r * Math.cos(ang);
+    const y = center + r * Math.sin(ang);
+    pts.push(`${x.toFixed(2)},${y.toFixed(2)}`);
+  }
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-label="Verificado" role="img">
+      <polygon points={pts.join(" ")} fill="#25D366" />
+      <path d="M30 52 L45 67 L74 38" stroke="white" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    </svg>
+  );
+};
 
 const FormularioContato = () => {
   const navigate = useNavigate();
@@ -101,22 +124,7 @@ const FormularioContato = () => {
             </div>
             <div className="flex items-center justify-center gap-1.5">
               <h1 className="text-2xl font-bold text-gray-900">123atendi</h1>
-              <div className="relative flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Badge serrilhado de verificação */}
-                  <path d="M50 5 L55 15 L65 10 L65 20 L75 20 L72 30 L82 35 L75 43 L82 51 L72 56 L75 66 L65 66 L65 76 L55 71 L50 81 L45 71 L35 76 L35 66 L25 66 L28 56 L18 51 L25 43 L18 35 L28 30 L25 20 L35 20 L35 10 L45 15 Z" 
-                    fill="#25D366" 
-                    stroke="#25D366" 
-                    strokeWidth="0"/>
-                  {/* Check branco */}
-                  <path d="M35 50 L45 60 L65 40" 
-                    stroke="white" 
-                    strokeWidth="8" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    fill="none"/>
-                </svg>
-              </div>
+              <VerifiedBadge size={32} />
             </div>
           </div>
 
