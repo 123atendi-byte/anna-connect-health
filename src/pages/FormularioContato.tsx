@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { motion } from "framer-motion";
-import { CheckCircle2, ArrowLeft } from "lucide-react";
+import { ArrowLeft, BadgeCheck } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -97,9 +97,9 @@ const FormularioContato = () => {
                 className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
               />
             </div>
-            <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="flex items-center justify-center gap-1 mb-2">
               <h1 className="text-2xl font-semibold text-gray-900">123atendi</h1>
-              <CheckCircle2 className="w-6 h-6 text-[#25D366]" />
+              <BadgeCheck className="w-6 h-6 text-[#25D366] fill-[#25D366]" />
             </div>
           </div>
 
