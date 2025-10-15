@@ -91,15 +91,19 @@ const FormularioContato = () => {
           {/* Header with Logo */}
           <div className="bg-white pt-12 pb-6 px-6 text-center border-b">
             <div className="flex justify-center mb-4">
-              <img 
-                src={logo123atendi} 
-                alt="123atendi" 
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
-              />
+              <div className="relative">
+                <img 
+                  src={logo123atendi} 
+                  alt="123atendi" 
+                  className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
+                />
+              </div>
             </div>
-            <div className="flex items-center justify-center gap-1 mb-2">
-              <h1 className="text-2xl font-semibold text-gray-900">123atendi</h1>
-              <CheckCircle className="w-6 h-6 text-white fill-[#25D366]" />
+            <div className="flex items-center justify-center gap-1.5">
+              <h1 className="text-2xl font-bold text-gray-900">123atendi</h1>
+              <div className="relative flex items-center justify-center">
+                <CheckCircle className="w-5 h-5 text-white fill-[#25D366] stroke-[3]" />
+              </div>
             </div>
           </div>
 
