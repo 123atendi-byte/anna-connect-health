@@ -97,15 +97,23 @@ const Index = () => {
 
             {/* Hero Title with Typewriter */}
             <motion.h1 
-              className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-snug md:leading-tight"
+              className="text-xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              O primeiro passo para cuidar melhor
-              <br className="hidden md:block" />
-              dos seus pacientes é ter um
-              <br className="hidden md:block" />
+              {/* Versão Mobile - 3 linhas compactas */}
+              <span className="md:hidden">
+                O primeiro passo para cuidar melhor<br />
+                dos seus pacientes é ter um<br />
+              </span>
+              
+              {/* Versão Desktop - mantém original */}
+              <span className="hidden md:inline">
+                O primeiro passo para cuidar melhor<br />
+                dos seus pacientes é ter um<br />
+              </span>
+              
               <span className="text-primary inline-block relative">
                 <TypewriterText 
                   texts={["atendimento inteligente"]}
