@@ -2,12 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ArrowLeft } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import logo123atendi from "@/assets/logo-123atendi.jpeg";
 
 const FormularioContato = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
   const webhookUrl = ""; // Configure seu webhook aqui
   
@@ -69,6 +71,15 @@ const FormularioContato = () => {
         </svg>
         <span className="text-lg font-semibold text-gray-800">WhatsApp</span>
       </div>
+
+      {/* Back Button - Top Right */}
+      <button
+        onClick={() => navigate("/")}
+        className="fixed top-4 right-4 z-10 p-2 hover:bg-gray-100 rounded-full transition-colors"
+        aria-label="Voltar para página inicial"
+      >
+        <ArrowLeft className="w-6 h-6 text-gray-600" />
+      </button>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
