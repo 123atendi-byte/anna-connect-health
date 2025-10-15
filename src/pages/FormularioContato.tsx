@@ -102,9 +102,19 @@ const FormularioContato = () => {
             <div className="flex items-center justify-center gap-1.5">
               <h1 className="text-2xl font-bold text-gray-900">123atendi</h1>
               <div className="relative flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#25D366" stroke="#25D366" strokeWidth="1"/>
-                  <path d="M9 12L11 14L15 10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Badge serrilhado de verificação */}
+                  <path d="M50 5 L55 15 L65 10 L65 20 L75 20 L72 30 L82 35 L75 43 L82 51 L72 56 L75 66 L65 66 L65 76 L55 71 L50 81 L45 71 L35 76 L35 66 L25 66 L28 56 L18 51 L25 43 L18 35 L28 30 L25 20 L35 20 L35 10 L45 15 Z" 
+                    fill="#25D366" 
+                    stroke="#25D366" 
+                    strokeWidth="0"/>
+                  {/* Check branco */}
+                  <path d="M35 50 L45 60 L65 40" 
+                    stroke="white" 
+                    strokeWidth="8" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    fill="none"/>
                 </svg>
               </div>
             </div>
