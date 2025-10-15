@@ -102,7 +102,10 @@ const FormularioContato = () => {
             <div className="flex items-center justify-center gap-1.5">
               <h1 className="text-2xl font-bold text-gray-900">123atendi</h1>
               <div className="relative flex items-center justify-center">
-                <CheckCircle className="w-5 h-5 text-white fill-[#25D366] stroke-[3]" />
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#25D366" stroke="#25D366" strokeWidth="1"/>
+                  <path d="M9 12L11 14L15 10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
             </div>
           </div>
