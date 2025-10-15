@@ -132,7 +132,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="px-4"
+              className="px-4 flex flex-col sm:flex-row gap-4 items-center justify-center"
             >
               <Button
                 size="lg"
@@ -142,6 +142,14 @@ const Index = () => {
                 <a href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna" target="_blank" rel="noopener noreferrer">
                   Conheça a Anna
                 </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-white text-primary border-primary hover:bg-primary hover:text-white font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all w-full sm:w-auto"
+                onClick={() => navigate("/contato?tipo=contato")}
+              >
+                Nós ligamos para você
               </Button>
             </motion.div>
           </div>
@@ -681,15 +689,25 @@ const Index = () => {
           <p className="text-base md:text-lg text-white/90 mb-6 md:mb-8 max-w-2xl mx-auto px-2">
             Centralize o atendimento da sua clínica em uma solução inteligente que automatiza agendamentos, confirmações e todo o contato com seus pacientes.
           </p>
-          <Button
-            size="lg"
-            className="bg-white text-primary hover:bg-white/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl w-full sm:w-auto hover:scale-105 transition-all"
-            asChild
-          >
-            <a href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna" target="_blank" rel="noopener noreferrer">
-              Quero conhecer a Anna
-            </a>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+            <Button
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl w-full sm:w-auto hover:scale-105 transition-all"
+              asChild
+            >
+              <a href="https://api.whatsapp.com/send/?phone=555121609890&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a%20Anna" target="_blank" rel="noopener noreferrer">
+                Quero conhecer a Anna
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-transparent text-white border-white hover:bg-white hover:text-primary font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl w-full sm:w-auto hover:scale-105 transition-all"
+              onClick={() => navigate("/contato?tipo=contato")}
+            >
+              Nós ligamos para você
+            </Button>
+          </div>
         </div>
       </section>
 
