@@ -14,8 +14,21 @@ import aiChatbot from "@/assets/ai-chatbot-demo.jpg";
 import aiDashboard from "@/assets/ai-dashboard-demo.jpg";
 import whatsappChat from "@/assets/whatsapp-ai-chat.jpg";
 import { useNavigate } from "react-router-dom";
+import { trackEvent } from "@/lib/facebook-pixel";
+
 const Index = () => {
   const navigate = useNavigate();
+
+  // Função para rastrear cliques em CTAs
+  const handleCTAClick = (tipo: string, buttonName: string) => {
+    trackEvent('InitiateCheckout', {
+      content_name: buttonName,
+      content_category: 'CTA Button',
+      value: 1,
+      currency: 'BRL',
+    });
+    navigate(`/contato?tipo=${tipo}`);
+  };
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const plugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
@@ -86,7 +99,7 @@ const Index = () => {
                 >
                   <Button
                     variant="outline"
-                    onClick={() => navigate(`/contato?tipo=${item.tipo}`)}
+                    onClick={() => handleCTAClick(item.tipo, `Lead Capture - ${item.label}`)}
                     className="bg-white text-primary border-primary/30 hover:bg-primary/10 hover:border-primary px-4 md:px-6 py-2 font-medium transition-all hover:scale-105 shadow-sm"
                   >
                     {item.label}
@@ -145,7 +158,7 @@ const Index = () => {
               <Button
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all w-full sm:w-auto"
-                onClick={() => navigate("/contato?tipo=conhecer-anna")}
+                onClick={() => handleCTAClick("conhecer-anna", "Hero - Conheça a Anna")}
               >
                 Conheça a Anna
               </Button>
@@ -153,7 +166,7 @@ const Index = () => {
                 size="lg"
                 variant="outline"
                 className="bg-white text-primary border-primary hover:bg-primary hover:text-white font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all w-full sm:w-auto"
-                onClick={() => navigate("/contato?tipo=contato")}
+                onClick={() => handleCTAClick("contato", "Hero - Nós ligamos para você")}
               >
                 Nós ligamos para você
               </Button>
@@ -529,7 +542,7 @@ const Index = () => {
                   <Button
                     size="lg"
                     className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 md:px-8 py-5 md:py-6 text-base md:text-lg shadow-xl hover:scale-105 transition-all group w-full sm:w-auto"
-                    onClick={() => navigate("/contato?tipo=demonstracao")}
+                    onClick={() => handleCTAClick("demonstracao", "CTA Mockup - Agende uma demonstração")}
                   >
                     <MessageSquare className="w-4 h-4 md:w-5 md:h-5 mr-2 group-hover:rotate-12 transition-transform" />
                     Agende uma demonstração
@@ -698,7 +711,7 @@ const Index = () => {
             <Button
               size="lg"
               className="bg-white text-primary hover:bg-white/90 font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl w-full sm:w-auto hover:scale-105 transition-all"
-              onClick={() => navigate("/contato?tipo=conhecer-anna")}
+              onClick={() => handleCTAClick("conhecer-anna", "CTA Final - Quero conhecer a Anna")}
             >
               Quero conhecer a Anna
             </Button>
@@ -706,7 +719,7 @@ const Index = () => {
               size="lg"
               variant="outline"
               className="bg-transparent text-white border-white hover:bg-white hover:text-primary font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg shadow-2xl w-full sm:w-auto hover:scale-105 transition-all"
-              onClick={() => navigate("/contato?tipo=contato")}
+              onClick={() => handleCTAClick("contato", "CTA Final - Nós ligamos para você")}
             >
               Nós ligamos para você
             </Button>
@@ -750,7 +763,7 @@ const Index = () => {
 
       {/* Contact Fixed Button */}
       <button
-        onClick={() => navigate("/contato?tipo=contato")}
+        onClick={() => handleCTAClick("contato", "Floating Button - Entre em contato")}
         className="fixed bottom-6 right-6 bg-primary hover:bg-primary/90 text-primary-foreground w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all z-50"
         aria-label="Entre em contato"
       >

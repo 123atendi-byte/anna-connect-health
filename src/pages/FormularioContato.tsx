@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import logo123atendi from "@/assets/logo-123atendi.jpeg";
+import { trackLead, trackContact, trackViewContent } from "@/lib/facebook-pixel";
 
 // Verified badge component (WhatsApp-style rosette)
 const VerifiedBadge = ({ size = 28 }: { size?: number }) => {
@@ -65,6 +66,14 @@ const FormularioContato = () => {
       });
 
       if (response.ok) {
+        // Rastrear evento de Lead no Facebook Pixel
+        trackLead({
+          content_name: "Formulário de Contato",
+          content_category: tipo,
+          value: 1,
+          currency: "BRL",
+        });
+
         toast({
           title: "Mensagem enviada com sucesso!",
           description: "Redirecionando para WhatsApp...",
@@ -78,6 +87,12 @@ const FormularioContato = () => {
 
         // Redireciona para WhatsApp após 1 segundo
         setTimeout(() => {
+          // Rastrear evento de Contact (redirecionamento WhatsApp)
+          trackContact({
+            content_name: "WhatsApp Redirect",
+            content_category: tipo,
+          });
+
           window.open(
             `https://api.whatsapp.com/send/?phone=555121609890&text=${encodeURIComponent(mensagemWhatsApp)}`,
             "_blank"
